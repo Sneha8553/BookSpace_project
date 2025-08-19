@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to bookSpace | Sign Up</title>
+    
+    <!-- Link to your stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Fonts: Poppins for body, and a decorative font for the title -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="form-container">
+        <h1>Create Your bookSpace<img src="logo.JPEG" alt="BookSpace Logo" class="logo"></h1>
+        <p>Join our community of readers and authors today.</p>
+
+        <!-- NEW: Role Selector -->
+        <div class="role-selector">
+            <div class="role active" data-role="reader">I am a Reader</div>
+            <div class="role" data-role="author">I am an Author</div>
+        </div>
+        
+        <form action="#" method="post">
+            <!-- Hidden input to store the selected role -->
+            <input type="hidden" id="selectedRole" name="role" value="reader">
+            
+            <div class="input-group">
+                <input type="text" id="username" name="username" placeholder="Choose a Username" required>
+            </div>
+            <div class="input-group">
+                <input type="email" id="email" name="email" placeholder="Email Address" required>
+            </div>
+            <div class="input-group">
+                <input type="password" id="password" name="password" placeholder="Create a Password" required>
+            </div>
+
+            <!-- NEW: Confirm Password Field -->
+            <div class="input-group">
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm Password" required>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Create Account</button>
+        </form>
+
+        <div class="divider">or sign up with</div>
+
+        <div class="social-login">
+            <button class="btn btn-social">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google">
+                Continue with Google
+            </button>
+        </div>
+
+        <div class="navigation-link">
+            Already have an account? <a href="login.html">Sign In</a>
+        </div>
+    </div>
+
+    <!-- NEW: Script for the Role Selector -->
+    <script>
+        const roleSelector = document.querySelector('.role-selector');
+        const roles = document.querySelectorAll('.role');
+        const selectedRoleInput = document.getElementById('selectedRole');
+
+        roleSelector.addEventListener('click', (e) => {
+            // Check if a role button was clicked
+            if (e.target.classList.contains('role')) {
+                // Remove the 'active' class from both buttons
+                roles.forEach(role => role.classList.remove('active'));
+                
+                // Add the 'active' class to the clicked button
+                const selectedRole = e.target;
+                selectedRole.classList.add('active');
+
+                // Update the hidden input's value for form submission
+                selectedRoleInput.value = selectedRole.dataset.role;
+            }
+        });
+    </script>
+
+</body>
+</html>

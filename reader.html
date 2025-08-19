@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookSpace</title>
+    <style>
+        :root {
+            --color-deep-purple: #3a2d5c;
+            --color-lavender: #a18cd1;
+            --color-dusty-pink: #fbc2eb;
+            --color-text: #2c2c2c;
+            --color-light-text: #f0f0f0;
+            --color-highlight: #51407d;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--color-lavender);
+            color: var(--color-text);
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 24px;
+            background: var(--color-deep-purple);
+            color: var(--color-light-text);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo img {
+            height: 80px;
+        }
+
+        .search-bar {
+            flex: 1;
+            margin: 0 20px;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 20px;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .profile {
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            padding: 12px;
+            background: var(--color-dusty-pink);
+        }
+
+        .tab {
+            padding: 8px 20px;
+            margin: 0 6px;
+            border-radius: 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            background: var(--color-light-text);
+            transition: all 0.2s ease;
+            color: var(--color-text);
+        }
+
+        .tab.active {
+            background: var(--color-highlight);
+            color: var(--color-light-text);
+        }
+
+        .tab:hover {
+            background: var(--color-lavender);
+            color: var(--color-text);
+        }
+
+        /* Books grid */
+        .books {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .book-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: transform 0.2s ease;
+        }
+
+        .book-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .book-card img {
+            width: 90%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .book-info {
+            padding: 12px;
+        }
+
+        .book-info h3 {
+            margin: 0 0 6px;
+            font-size: 16px;
+            color: var(--color-deep-purple);
+        }
+
+        .book-info p {
+            margin: 0 0 10px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .rating {
+            font-size: 14px;
+            margin-bottom: 10px;
+            color: var(--color-highlight);
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--color-highlight);
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: background 0.2s ease;
+        }
+
+        .btn:hover {
+            background: var(--color-deep-purple);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="logo">
+            <img src="bookspace1.png".png" alt="BookSpace Logo">
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search books...">
+        </div>
+        <div class="profile">👤 Profile</div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs">
+        <div class="tab active">To Read</div>
+        <div class="tab">Currently Reading</div>
+        <div class="tab">Read</div>
+    </div>
+
+    <!-- Books -->
+    <div class="books">
+        <!-- Fiction Books -->
+        <div class="book-card">
+            <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1733931824i/221228045.jpg"
+                alt="Book Cover">
+            <div class="book-info">
+                <h3>A Study in Drowning #2
+                    A Theory of Dreaming</h3>
+                <p>Ava Reid
+                </p>
+                <div class="rating">⭐ 3.84</div>
+                <a href="#" class="btn">✨ AI Summary</a>
+            </div>
+        </div>
+
+        <div class="book-card">
+            <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1541428344i/17165596.jpg"
+                alt="Book Cover">
+            <div class="book-info">
+                <h3>The Kite Runner</h3>
+                <p>Khaled Hosseini</p>
+                <div class="rating">⭐ 4.35</div>
+                <a href="#" class="btn">✨ AI Summary</a>
+            </div>
+        </div>
+
+        <div class="book-card">
+            <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1733355498i/221955020.jpg"
+                alt="Book Cover">
+            <div class="book-info">
+                <h3>The Souls of Blackwood Academy #1
+                    Immortal Consequences</h3>
+                <p>I.V. Marie</p>
+                <div class="rating">⭐ 3.98</div>
+                <a href="#" class="btn">✨ AI Summary</a>
+            </div>
+        </div>
+
+        <div class="book-card">
+            <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1598823299i/42844155.jpg"
+                alt="Book Cover">
+            <div class="book-info">
+                <h3>Harry Potter #1
+                    Harry Potter and the Philosopher’s Stone</h3>
+                <p>J.K. Rowling,
+                    Olly Moss
+                    (Illustrator)</p>
+                <div class="rating">⭐ 4.47</div>
+                <a href="#" class="btn">✨ AI Summary</a>
+            </div>
+        </div>
+
+        <div class="book-card">
+            <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1388800064i/9648068.jpg"
+                alt="Book Cover">
+            <div class="book-info">
+                <h3>As the World Dies #1
+                    The First Days</h3>
+                <p>Rhiannon Frater</p>
+                <div class="rating">⭐ 3.77</div>
+                <a href="#" class="btn">✨ AI Summary</a>
+            </div>
+        </div>
+
+        <div class="book-card">
+            <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1442161289i/6642715.jpg"
+                alt="Book Cover">
+            <div class="book-info">
+                <h3>The Forty Rules of Love</h3>
+                <p>Elif Shafak</p>
+                <div class="rating">⭐ 4.11</div>
+                <a href="#" class="btn">✨ AI Summary</a>
+            </div>
+        </div>
+
+        <!-- Non-fiction (kept some from before) -->
+        <div class="book-card">
+            <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1733011568i/220458659.jpg"
+                alt="Book Cover">
+            <div class="book-info">
+                <h3>Midnight on the Potomac</h3>
+                <p>Scott Ellsworth</p>
+                <div class="rating">⭐ 4.27</div>
+                <a href="#" class="btn">✨ AI Summary</a>
+            </div>
+        </div>
+
+        <div class="book-card">
+            <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1731044766i/218372291.jpg"
+                alt="Book Cover">
+            <div class="book-info">
+                <h3>The Lost Peace</h3>
+                <p>Jay Winik</p>
+                <div class="rating">⭐ 4.24</div>
+                <a href="#" class="btn">✨ AI Summary</a>
+            </div>
+        </div>
+
+        <!-- Horror Books -->
+        <div class="book-card">
+            <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1733505329i/219542937.jpg"
+                alt="Book Cover">
+            <div class="book-info">
+                <h3>It Was Her House First</h3>
+                <p>Cherie Priest</p>
+                <div class="rating">⭐ 3.87</div>
+                <a href="#" class="btn">✨ AI Summary</a>
+            </div>
+        </div>
+
+        <div class="book-card">
+            <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1729088211i/220161280.jpg"
+                alt="Book Cover">
+            <div class="book-info">
+                <h3>Dead of Summer</h3>
+                <p>Jessa Maxwell</p>
+                <div class="rating">⭐ 3.50</div>
+                <a href="#" class="btn">✨ AI Summary</a>
+            </div>
+        </div>
+        <!-- Poetry Books -->
+        <div class="book-card">
+            <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1754601023i/239873580.jpg"
+                alt="Book Cover">
+            <div class="book-info">
+                <h3>Dwarf Stars Anthology</h3>
+                <p>Miguel O. Mitchell</p>
+                <div class="rating">⭐ 4.80</div>
+                <a href="#" class="btn">✨ AI Summary</a>
+            </div>
+        </div>
+
+        <div class="book-card">
+            <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1652446760i/61085371.jpg"
+                alt="Book Cover">
+            <div class="book-info">
+                <h3>Rhysling Anthology</h3>
+                <p>F. J. Bergmann and Brian U. Garrison</p>
+                <div class="rating">⭐ 4.50</div>
+                <a href="#" class="btn">✨ AI Summary</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

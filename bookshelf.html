@@ -81,38 +81,59 @@
     </div>
 
     <script>
-        function addBook() {
-            const title = document.getElementById("title").value;
-            const author = document.getElementById("author").value;
-            const rating = document.getElementById("rating").value;
-            const cover = document.getElementById("cover").value;
-
-            if (title && author && rating && cover) {
-                const grid = document.getElementById("bookGrid");
-
+    // Fetch books from backend when page loads
+    window.onload = function() {
+        fetch("backend.php")
+        .then(res => res.json())
+        .then(data => {
+            const grid = document.getElementById("bookGrid");
+            data.forEach(book => {
                 const card = document.createElement("div");
                 card.classList.add("book-card");
-
                 card.innerHTML = `
-          <img src="${cover}" alt="Book">
-          <div class="book-title">${title}</div>
-          <div class="book-author">${author}</div>
-          <div class="book-rating">⭐ ${rating}</div>
-          <button class="summary-btn">AI Summary</button>
-        `;
-
+                    <img src="${book.cover}" alt="Book">
+                    <div class="book-title">${book.title}</div>
+                    <div class="book-author">${book.author}</div>
+                    <div class="book-rating">⭐ ${book.rating}</div>
+                    <button class="summary-btn">AI Summary</button>
+                `;
                 grid.appendChild(card);
+            });
+        });
+    };
 
-                // Clear inputs
-                document.getElementById("title").value = "";
-                document.getElementById("author").value = "";
-                document.getElementById("rating").value = "";
-                document.getElementById("cover").value = "";
-            } else {
-                alert("Please fill all fields!");
-            }
+    // Add book via backend
+    function addBook() {
+        const title = document.getElementById("title").value;
+        const author = document.getElementById("author").value;
+        const rating = document.getElementById("rating").value;
+        const cover = document.getElementById("cover").value;
+
+        if (title && author && rating && cover) {
+            const formData = new FormData();
+            formData.append("title", title);
+            formData.append("author", author);
+            formData.append("rating", rating);
+            formData.append("cover", cover);
+
+            fetch("backend.php", {
+                method: "POST",
+                body: formData
+            })
+            .then(res => res.text())
+            .then(response => {
+                if (response === "success") {
+                    alert("Book added successfully!");
+                    location.reload(); // reload to fetch new book
+                } else {
+                    alert("Error adding book.");
+                }
+            });
+        } else {
+            alert("Please fill all fields!");
         }
-    </script>
+    }
+</script>
 
 </body>
 

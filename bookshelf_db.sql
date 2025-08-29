@@ -1,0 +1,11 @@
+CREATE DATABASE IF NOT EXISTS bookspace;
+
+USE bookspace;
+
+CREATE TABLE books (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    author VARCHAR(255) NOT NULL,
+    rating FLOAT NOT NULL,
+    cover VARCHAR(500) NOT NULL
+);

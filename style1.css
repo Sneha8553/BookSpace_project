@@ -1,7 +1,4 @@
-/* Paste this into your existing style.css file */
-/* You can add it to the bottom */
 
-/* --- General Container Styling (Can be shared with login) --- */
 .signup-container {
     width: 100%;
     max-width: 450px; /* Slightly wider for more fields */
@@ -15,8 +12,6 @@
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
     text-align: center;
 }
-
-/* --- H1 and Logo Styling (same as login) --- */
 .signup-container h1 {
     font-family: 'Cinzel Decorative', serif; /* Or 'Nunito' or 'Pacifico' */
     font-size: 2.6rem;

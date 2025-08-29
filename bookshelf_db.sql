@@ -2,7 +2,7 @@ CREATE DATABASE IF NOT EXISTS bookspace;
 
 USE bookspace;
 
-CREATE TABLE books (
+CREATE TABLE bookshelf (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     author VARCHAR(255) NOT NULL,

@@ -1,0 +1,234 @@
+    :root {
+        --color-deep-purple: #3a2d5c;
+        --color-lavender: #a18cd1;
+        --color-dusty-pink: #fbc2eb;
+        --color-text: #2c2c2c;
+        --color-light-text: #f0f0f0;
+        --color-highlight: #51407d;
+    }
+
+    body {
+        margin: 0;
+        font-family: "Segoe UI", sans-serif;
+        background: var(--color-lavender);
+        color: var(--color-text);
+    }
+
+    /* Navbar
+    header {
+      background: var(--color-deep-purple);
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-left: 12px;
+    border: 2px solid var(--color-lavender);
+}
+    header h1 {
+      font-size: 20px;
+      letter-spacing: 2px;
+    }
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+      display: flex;
+    } */
+
+    /* .search-bar input {
+      padding: 8px 12px;
+      border-radius: 25px;
+      border: none;
+      outline: none;
+    } */
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 24px;
+        background: var(--color-deep-purple);
+        color: var(--color-light-text);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .logo img {
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        margin: 0px 20px 0px 20px;
+        border: 2px solid var(--color-lavender);
+    }
+
+    .search-bar {
+        flex: 1;
+        margin: 0 20px;
+    }
+
+    .search-bar input {
+        width: 50%;
+        padding: 8px 12px;
+        border: none;
+        border-radius: 20px;
+        outline: none;
+        font-size: 14px;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      display:flex;
+      gap:20px;
+    }
+
+    /* Layout */
+    .container {
+        display: flex;
+    }
+
+    /* Sidebar */
+    .sidebar {
+        width: 250px;
+        background: var(--color-dusty-pink);
+        padding: 20px;
+        height: 120vh;
+        overflow-y: auto;
+    }
+
+    .sidebar h3 {
+        margin-top: 20px;
+        margin-bottom: 10px;
+        color: var(--color-deep-purple);
+    }
+
+    .sidebar label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 14px;
+    }
+
+    /* Bookshelf */
+    .bookshelf {
+        flex: 1;
+        padding: 30px;
+    }
+
+    .bookshelf h2 {
+        margin-bottom: 20px;
+        color: var(--color-deep-purple);
+    }
+
+    .book-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 20px;
+    }
+
+    /* Book Card */
+    .book-card {
+        background: white;
+        border-radius: 12px;
+        padding: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        transition: transform 0.2s;
+    }
+
+    .book-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .book-card img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    .book-title {
+        font-size: 16px;
+        font-weight: bold;
+        margin: 10px 0 5px;
+    }
+
+    .book-author {
+        font-size: 14px;
+        color: gray;
+        margin-bottom: 5px;
+    }
+
+    .book-rating {
+        color: goldenrod;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .summary-btn {
+        background: var(--color-highlight);
+        color: white;
+        border: none;
+        padding: 6px 14px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .summary-btn:hover {
+        background: var(--color-deep-purple);
+    }
+
+    /* Add Book Form */
+    .add-book-form {
+        margin-top: 30px;
+        padding: 20px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .add-book-form h3 {
+        margin-bottom: 15px;
+        color: var(--color-deep-purple);
+    }
+
+    .add-book-form input {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 12px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+    }
+
+    .add-book-form button {
+        background: var(--color-deep-purple);
+        color: white;
+        padding: 10px 16px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    .add-book-form button:hover {
+        background: var(--color-highlight);
+    }

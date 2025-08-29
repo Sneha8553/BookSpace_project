@@ -1,233 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bookshelf - BookSpace</title>
-  <style>
-    :root {
-      --color-deep-purple: #3a2d5c;
-      --color-lavender: #a18cd1;
-      --color-light: #f9f9f9;
-      --color-star: #f5b301;
-      --color-text: #2c2c2c;
-    }
-
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: var(--color-lavender);
-    }
-
-    /* Navbar */
-    .navbar {
-      background-color: var(--color-deep-purple);
-      padding: 15px 30px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-
-      /* 👇 Sticky Effect */
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .navbar a {
-      color: white;
-      text-decoration: none;
-      margin: 0 12px;
-      font-weight: bold;
-    }
-
-    .search-box {
-      flex: 1;
-      margin: 10px 20px;
-    }
-
-    .search-box input {
-      width: 100%;
-      padding: 8px 12px;
-      border-radius: 20px;
-      border: none;
-    }
-
-    /* Bookshelf Section */
-    .bookshelf {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      padding: 20px;
-    }
-
-    .book-card {
-      background: var(--color-light);
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
-      transition: transform 0.2s;
-    }
-
-    .book-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .book-card img {
-      width: 100%;
-      height: 280px;
-      object-fit: cover;
-    }
-
-    .book-info {
-      padding: 12px;
-    }
-
-    .book-title {
-      font-size: 14px;
-      font-weight: bold;
-      margin: 0;
-      color: var(--color-text);
-    }
-
-    .book-author {
-      font-size: 13px;
-      color: #555;
-      margin: 4px 0;
-    }
-
-    .rating {
-      color: var(--color-star);
-      font-size: 14px;
-      margin: 6px 0;
-    }
-
-    .btn-summary {
-      display: block;
-      width: 100%;
-      padding: 8px;
-      margin-top: 10px;
-      text-align: center;
-      background-color: var(--color-deep-purple);
-      color: white;
-      font-weight: bold;
-      border-radius: 8px;
-      text-decoration: none;
-    }
-
-    .btn-summary:hover {
-      background-color: #2b2043;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .search-box {
-        width: 100%;
-        margin: 10px 0;
-      }
-    }
-
-    @media (max-width: 500px) {
-      .book-card img {
-        height: 220px;
-      }
-      .book-title {
-        font-size: 13px;
-      }
-      .book-author {
-        font-size: 12px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookSpace | Readers</title>
+    <link rel="stylesheet" href="bookshelf.css">
 </head>
+
 <body>
 
-  <!-- Navbar -->
-  <div class="navbar">
-    <a href="#">Home</a>
-    <a href="#">Bookshelf</a>
-    <a href="#">Contact</a>
-    <a href="#">AI Chatbot</a>
-    <a href="#">Authors</a>
+    <!-- Navbar -->
+    <header>
+        <div class="header">
+            <div class="logo">
+                <img src="logo.JPEG" alt="BookSpace Logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Bookshelf</a></li>
+                    <li><a href="#">Cost</a></li>
+                </ul>
+            </nav>
+            <div class="search-bar">
+                <input type="text" placeholder="Search books...">
+            </div>
+    </header>
 
-    <div class="search-box">
-      <input type="text" placeholder="Search books...">
-    </div>
-    <a href="#">Profile</a>
-  </div>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h3>Genres</h3>
+            <label><input type="checkbox"> Fantasy</label>
+            <label><input type="checkbox"> Sci-Fi</label>
+            <label><input type="checkbox"> History</label>
+            <label><input type="checkbox"> Cookbooks</label>
 
-  <!-- Bookshelf -->
-  <div class="bookshelf">
-    <!-- Book 1 -->
-    <div class="book-card">
-      <img src="https://m.media-amazon.com/images/I/81a4kCNuH+L.jpg" alt="Book">
-      <div class="book-info">
-        <p class="book-title">The Kite Runner</p>
-        <p class="book-author">Khaled Hosseini</p>
-        <p class="rating">⭐ 4.35</p>
-        <a href="#" class="btn-summary">✨ AI Summary</a>
-      </div>
-    </div>
+            <h3>Authors</h3>
+            <label><input type="checkbox"> Khaled Hosseini</label>
+            <label><input type="checkbox"> Dan Brown</label>
 
-    <!-- Book 2 -->
-    <div class="book-card">
-      <img src="https://m.media-amazon.com/images/I/91HHqVTAJQL.jpg" alt="Book">
-      <div class="book-info">
-        <p class="book-title">Harry Potter and the Sorcerer’s Stone</p>
-        <p class="book-author">J.K. Rowling</p>
-        <p class="rating">⭐ 4.47</p>
-        <a href="#" class="btn-summary">✨ AI Summary</a>
-      </div>
-    </div>
+            <h3>Rating</h3>
+            <label><input type="checkbox"> 4★ & above</label>
+            <label><input type="checkbox"> 3★ & above</label>
+        </aside>
 
-    <!-- Book 3 -->
-    <div class="book-card">
-      <img src="https://m.media-amazon.com/images/I/81-QB7nDh4L.jpg" alt="Book">
-      <div class="book-info">
-        <p class="book-title">The Forty Rules of Love</p>
-        <p class="book-author">Elif Shafak</p>
-        <p class="rating">⭐ 4.11</p>
-        <a href="#" class="btn-summary">✨ AI Summary</a>
-      </div>
-    </div>
+        <!-- Bookshelf -->
+        <main class="bookshelf">
+            <h2>Explore the Bookshelf</h2>
+            <div class="book-grid" id="bookGrid">
+                <!-- Book Card -->
+                <div class="book-card">
+                    <img src="https://covers.openlibrary.org/b/id/8228691-L.jpg" alt="Book">
+                    <div class="book-title">The Kite Runner</div>
+                    <div class="book-author">Khaled Hosseini</div>
+                    <div class="book-rating">⭐ 4.5</div>
+                    <button class="summary-btn">AI Summary</button>
+                </div>
 
-    <!-- Book 4 -->
-    <div class="book-card">
-      <img src="https://m.media-amazon.com/images/I/71UwSHSZRnS.jpg" alt="Book">
-      <div class="book-info">
-        <p class="book-title">The Alchemist</p>
-        <p class="book-author">Paulo Coelho</p>
-        <p class="rating">⭐ 3.95</p>
-        <a href="#" class="btn-summary">✨ AI Summary</a>
-      </div>
-    </div>
+                <div class="book-card">
+                    <img src="https://covers.openlibrary.org/b/id/10594740-L.jpg" alt="Book">
+                    <div class="book-title">Infernal Devices</div>
+                    <div class="book-author">K.W. Jeter</div>
+                    <div class="book-rating">⭐ 4.0</div>
+                    <button class="summary-btn">AI Summary</button>
+                </div>
+            </div>
 
-    <!-- Book 5 -->
-    <div class="book-card">
-      <img src="https://m.media-amazon.com/images/I/81iqZ2HHD-L.jpg" alt="Book">
-      <div class="book-info">
-        <p class="book-title">Harry Potter and the Chamber of Secrets</p>
-        <p class="book-author">J.K. Rowling</p>
-        <p class="rating">⭐ 4.42</p>
-        <a href="#" class="btn-summary">✨ AI Summary</a>
-      </div>
+            <!-- Add Book Form -->
+            <div class="add-book-form">
+                <h3>Add Your Book</h3>
+                <input type="text" id="title" placeholder="Book Title" required>
+                <input type="text" id="author" placeholder="Author Name" required>
+                <input type="number" step="0.1" min="0" max="5" id="rating" placeholder="Rating (0-5)" required>
+                <input type="text" id="cover" placeholder="Cover Image URL" required>
+                <button onclick="addBook()">Add Book</button>
+            </div>
+        </main>
     </div>
 
-    <!-- Book 6 -->
-    <div class="book-card">
-      <img src="https://m.media-amazon.com/images/I/91b0C2YNSrL.jpg" alt="Book">
-      <div class="book-info">
-        <p class="book-title">To Kill a Mockingbird</p>
-        <p class="book-author">Harper Lee</p>
-        <p class="rating">⭐ 4.28</p>
-        <a href="#" class="btn-summary">✨ AI Summary</a>
-      </div>
-    </div>
-  </div>
+    <script>
+        function addBook() {
+            const title = document.getElementById("title").value;
+            const author = document.getElementById("author").value;
+            const rating = document.getElementById("rating").value;
+            const cover = document.getElementById("cover").value;
+
+            if (title && author && rating && cover) {
+                const grid = document.getElementById("bookGrid");
+
+                const card = document.createElement("div");
+                card.classList.add("book-card");
+
+                card.innerHTML = `
+          <img src="${cover}" alt="Book">
+          <div class="book-title">${title}</div>
+          <div class="book-author">${author}</div>
+          <div class="book-rating">⭐ ${rating}</div>
+          <button class="summary-btn">AI Summary</button>
+        `;
+
+                grid.appendChild(card);
+
+                // Clear inputs
+                document.getElementById("title").value = "";
+                document.getElementById("author").value = "";
+                document.getElementById("rating").value = "";
+                document.getElementById("cover").value = "";
+            } else {
+                alert("Please fill all fields!");
+            }
+        }
+    </script>
 
 </body>
+
 </html>

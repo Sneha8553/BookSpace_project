@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In | bookSpace</title>
 
-    <!-- Link to the same stylesheet -->
     <link rel="stylesheet" href="login.css">
     
-    <!-- Link to the same Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
@@ -19,7 +17,6 @@
         <h1>Welcome Back<img src="logo.JPEG" alt="BookSpace Logo" class="logo"></h1>
         <p>Your next favorite read is waiting.</p>
         
-        <!-- Role Selector -->
         <div class="role-selector">
             <div class="role active" data-role="reader">Reader</div>
             <div class="role" data-role="author">Author</div>
@@ -34,7 +31,7 @@
                 <input type="password" id="password" name="password" placeholder="Password" required>
             </div>
             <button type="submit" class="btn btn-primary">Sign In</button>
-            <a href="#" class="forgot-password">Forgot Password?</a>
+            <a href="forget_password.html" class="forgot-password">Forgot Password?</a>
         </form>
 
         <div class="navigation-link">
@@ -43,7 +40,6 @@
     </div>
 
     <script>
-        // --- Role Selector Script ---
         const roleSelector = document.querySelector('.role-selector');
         const roles = document.querySelectorAll('.role');
         const selectedRoleInput = document.getElementById('selectedRole');
@@ -58,6 +54,25 @@
                 }
             });
         }
+    </script>
+     <script>
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+
+            if (urlParams.has('error')) {
+                const errorType = urlParams.get('error');
+
+                if (errorType === 'invalidcredentials') {
+                    alert("Error: Invalid email or password. Please try again.");
+                }
+                 else if (errorType === 'dberror') {
+                    alert("An unexpected database error occurred. Please contact support.");
+                }
+            }
+            else if (urlParams.has('status') && urlParams.get('status') === 'success') {
+                alert("Account created successfully! You can now sign in.");
+            }
+        };
     </script>
 </body>
 </html>

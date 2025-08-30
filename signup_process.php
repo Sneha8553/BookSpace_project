@@ -12,7 +12,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $role = $_POST['role']; 
 
     if ($password !== $confirmPassword) {
-        header("Location: signup.html?error=passwordsdontmatch");
+        // header("Location: signup.html?error=passwordsdontmatch");
+        echo "<script>alert('Passwords do not match.'); window.location.href='signup.html';</script>";
         exit();
     }
 
@@ -20,7 +21,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt_check = $pdo->prepare($sql_check);
     $stmt_check->execute([$email]);
     if ($stmt_check->fetch()) {
-        header("Location: signup.html?error=emailtaken");
+       // header("Location: signup.html?error=emailtaken");
+       echo "<script>alert('Email is already registered.'); window.location.href='signup.html';</script>";
         exit();
     }
 
@@ -43,6 +45,7 @@ try {
     }  else {
         header("Location: index.html?error=invalidrole");
     }
+   
     exit();
 
 } catch (PDOException $e) {

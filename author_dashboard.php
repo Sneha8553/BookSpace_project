@@ -34,36 +34,24 @@ $my_books = $stmt_my_books->fetchAll();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Author Dashboard</title>
 
-    <!-- THE CORRECT, COMPLETE FONT LINK -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Lora:wght@400;600&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="dashboard_style.css">
 </head>
 <body>
 
     <div class="dashboard-container">
 
-        <aside class="sidebar">
-        
-            <h2><samp style="
-    position: relative;
-    top: -31px;
-    right: 12px;
-">bookSpace</samp><img src="logo.JPEG" alt="BookSpace Logo" class="logo"></h2>
-            <div class="sidebar-profile-area"> 
-            <img src="profile.jpg" alt="User Avatar" class="profile-avatar">
-             <p class="welcome-text">Welcome, <strong><?php echo htmlspecialchars($username); ?></strong>!</p>
-            </div>
-            <a href="author_dashboard.php" class="active">Dashboard</a>
-            <a href="my_profile.php">My Profile</a>
-            <a href="#">Messages</a>
-            <a href="logout.php" class="logout">Logout</a>
-        </aside>
+        <?php include 'sidebar.php'; ?>
 
         <main class="main-content">
-            <h1>Author Dashboard</h1>
+            <h1><p class="welcome-text">Welcome</h1>
             <p class="page-subtitle">Your creative workspace at a glance.</p>
             
             <div class="stats-grid">
@@ -84,6 +72,7 @@ $my_books = $stmt_my_books->fetchAll();
                 </div>
 
                 <?php if (empty($my_books)): ?>
+                    <br>
                     <p>You haven't published any books yet. Click "Add New Book" to get started!</p>
                 <?php else: ?>
                     <table class="books-table">

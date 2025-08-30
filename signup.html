@@ -13,21 +13,21 @@
         window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
 
-            if (urlParams.has('error')) {
-                const errorType = urlParams.get('error');
-                if (errorType === 'passwordsdontmatch') {
-                    alert("Error: The passwords you entered do not match. Please try again.");
-                } 
-                else if (errorType === 'emailtaken') {
-                    alert("Error: An account with this email address already exists.");
-                }
-                else if (errorType === 'dberror') {
-                    alert("An unexpected database error occurred. Please try again later.");
-                }
-            }
-            else if (urlParams.has('status') && urlParams.get('status') === 'success') {
-                alert("Account created successfully! Please sign in.");
-            }
+            // if (urlParams.has('error')) {
+            //     const errorType = urlParams.get('error');
+            //     if (errorType === 'passwordsdontmatch') {
+            //         alert("Error: The passwords you entered do not match. Please try again.");
+            //     } 
+            //     else if (errorType === 'emailtaken') {
+            //         alert("Error: An account with this email address already exists.");
+            //     }
+            //     else if (errorType === 'dberror') {
+            //         alert("An unexpected database error occurred. Please try again later.");
+            //     }
+            // }
+            // else if (urlParams.has('status') && urlParams.get('status') === 'success') {
+            //     alert("Account created successfully! Please sign in.");
+            // }
         };
     </script>
 <body>

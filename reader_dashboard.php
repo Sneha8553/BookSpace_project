@@ -1,6 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+// rest-search.php
+$q = urlencode($_POST['search'] ?? 'harry potter');           // your search query
+$key = 'AIzaSyCOCuStWqupRkpuhuYgeG4tqGYUDIsizns';                   // from Cloud Console
+$url = "https://www.googleapis.com/books/v1/volumes?q={$q}&key={$key}&maxResults=10";
 
+$json = file_get_contents($url);
+$data = json_decode($json, true);
+// ECHO "json_decode($json, true)\n";
+// if (!empty($data['items'])) {
+//     foreach ($data['items'] as $item) {
+//         $v = $item['volumeInfo'];
+//         $title = $v['title'] ?? '—';
+//         $authors = isset($v['authors']) ? implode(', ', $v['authors']) : '—';
+//         echo $title . ' — ' . $authors . PHP_EOL;
+//     }
+// } else {
+//     echo "No results\n";
+// }
+?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,19 +31,21 @@
 </head>
 
 <body>
-<<<<<<< HEAD:reader.html
+<!-- <<<<<<< HEAD:reader.html -->
     
     <!-- Header -->
-=======
->>>>>>> 5cf385a (bookspace):reader_dashboard.php
+<!-- ======= -->
     <div class="header">
         <?php session_start();  echo $_SESSION['role'] ?>
         <div class="logo">
-            <img src="logo.JPEG" .png" alt="BookSpace Logo">
+            <img src="logo.JPEG" alt="BookSpace Logo">
         </div>
-        <div class="search-bar">
-            <input type="text" placeholder="Search books...">
+        <form action="reader_dashboard.php" method="post">
+            <div class="search-bar">
+            <input type="text" name="search" placeholder="Search books...">
         </div>
+        </form>
+        
         <div class="profile">👤 Profile</div>
     </div>
 
@@ -32,7 +53,7 @@
     </div>
   <nav>
   <ul>
-    <li><a href="reader.html">Home</a></li>
+    <li><a href="reader_dashboard.php">Home</a></li>
     <li><a href="bookshelf.html">Bookshelf</a></li>
     <li><a href="cost.html">Cost</a></li>
     <li><a href="contact.html">Contact</a></li>
@@ -46,6 +67,21 @@
     </header>
 
     <div class="books">
+
+   <?php
+            if (!empty($data['items']))  foreach ($data['items'] as $item): ?>
+                <div class="book-card">
+                    <img src="<?php echo $item['volumeInfo']['imageLinks']['thumbnail'] ?? 'https://via.placeholder.com/150'; ?>" alt="Book Cover">
+                    <div class="book-info">
+                        <h3><?php echo $item['volumeInfo']['title'] ?? 'No Title'; ?></h3>
+                        <p><?php echo isset($item['volumeInfo']['authors']) ? implode(', ', $item['volumeInfo']['authors']) : 'Unknown Author'; ?></p>
+                        <div class="rating">⭐ <?php echo $item['volumeInfo']['averageRating'] ?? 'N/A'; ?></div>
+                        <a href=" <?php echo $item['volumeInfo']['infoLink'] ?? 'N/A'; ?>"  class="btn">✨ AI Summary</a>
+                        <!-- infoLink -->
+                    </div>
+                </div>
+
+        <?php endforeach; ?>
         <div class="book-card">
             <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1733931824i/221228045.jpg"
                 alt="Book Cover">

@@ -12,7 +12,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'author') {
 <head>
     <meta charset="UTF-8">
     <title>Add a New Book</title>
-    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="style1.css"> 
 </head>
 <body>
     <div class="form-container">

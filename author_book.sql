@@ -9,3 +9,5 @@ CREATE TABLE books (
     author_id INT NOT NULL,
     FOREIGN KEY (author_id) REFERENCES users(user_id) ON DELETE CASCADE
 );
+ALTER TABLE books
+ADD COLUMN status VARCHAR(50) NOT NULL DEFAULT 'Draft' AFTER genre;

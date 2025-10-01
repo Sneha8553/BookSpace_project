@@ -248,8 +248,8 @@ if (!$book) {
                                         <div class="col-md-6 col-sm-12">
                                             <div class="input-group mb-3">
                                                 <label>Current Cover Image</label>
-                                                <div class="current-cover">
-                                                    <img style="hight: 100%; width: 100%;"
+                                                <div class="current-cover" style="max-height: 415px; overflow: scroll;">
+                                                    <img style="hight: 415px; width: 100%;"
                                                         src="<?php echo htmlspecialchars($book['cover_image'] ?? 'default-cover.png'); ?>"
                                                         alt="Current Cover">
                                                 </div>

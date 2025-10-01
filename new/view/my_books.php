@@ -163,7 +163,7 @@ $my_books = $stmt_my_books->fetchAll();
     <div class="container-fluid">
         <div class="row">
 
-           <?php include 'sidebar.php'; ?>
+            <?php include 'sidebar.php'; ?>
             <!-- Main Content -->
             <div class="col-md-9 col-lg-10 main-content">
 
@@ -182,89 +182,100 @@ $my_books = $stmt_my_books->fetchAll();
                                 <div class="card-header">
                                     <!-- <div class="works-header"> -->
                                     <h5>Manage My Works</h5>
+                                    <div class="d-flex gap-2">
 
-                                    <a href="add_book.php" class="btn add-book-btn float-right mb-3"><i
-                                            class="bi bi-plus-circle"></i> Add New Book</a>
+                                        <!-- NEW LINK to switch to the card view -->
+                                        <!-- This link should be inside new/view/my_books.php -->
 
-                                    <!-- </div> -->
-                                </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <p class="page-subtitle">Here you can edit or delete your published books.
-                                            </p>
+                                        <a href="reader/bookshelf.php?author_id=<?php $_SESSION['id'] = $_SESSION['user_id']; ?>"
+                                            class="btn add-book-btn float-right mb-3">
+                                            View as Reader
+                                        </a>
+                                        <a href="add_book.php" class="btn add-book-btn float-right mb-3"><i
+                                                class="bi bi-plus-circle"></i> Add New Book</a>
 
-                                            <div class="my-works">
-                                                <?php if (empty($my_books)): ?>
-                                                    <!-- This message shows ONLY if there are no books -->
-                                                    <p>You haven't published any books yet. <a href="add_book.php">Click
-                                                            here to add
-                                                            one!</a>
-                                                    </p>
-                                                <?php else: ?>
-                                                    <!-- The table and its header are now correctly placed -->
-                                                    <!--  -->
-                                                    <div class="row col-md-12 mb-3">
-                                                        <div class="table-responsive">
-                                                            <table class="table table-success table-striped">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>Title</th>
-                                                                        <th>Status</th>
-                                                                        <th>Genre</th>
-                                                                        <th>Views</th>
-                                                                        <th>Actions</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <!-- The loop to display each book row -->
-                                                                    <?php foreach ($my_books as $book): ?>
+                                        <!-- </div> -->
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <p class="page-subtitle">Here you can edit or delete your published
+                                                    books.
+                                                </p>
+
+                                                <div class="my-works">
+                                                    <?php if (empty($my_books)): ?>
+                                                        <!-- This message shows ONLY if there are no books -->
+                                                        <p>You haven't published any books yet. <a href="add_book.php">Click
+                                                                here to add
+                                                                one!</a>
+                                                        </p>
+                                                    <?php else: ?>
+                                                        <!-- The table and its header are now correctly placed -->
+                                                        <!--  -->
+                                                        <div class="row col-md-12 mb-3">
+                                                            <div class="table-responsive">
+                                                                <table class="table table-success table-striped">
+                                                                    <thead>
                                                                         <tr>
-                                                                            <td><strong><?php echo htmlspecialchars($book['title']); ?></strong>
-                                                                            </td>
-                                                                            <td>
-                                                                                <?php
-                                                                                $status_class = '';
-                                                                                if ($book['status'] === 'Published') {
-                                                                                    $status_class = 'bg-success';
-                                                                                } elseif ($book['status'] === 'Draft') {
-                                                                                    $status_class = 'bg-secondary';
-                                                                                } else {
-                                                                                    $status_class = 'bg-warning text-dark';
-                                                                                }
-                                                                                ?>
-                                                                                <span
-                                                                                    class="badge <?php echo $status_class; ?>">
-                                                                                    <?php echo htmlspecialchars($book['status']); ?>
-                                                                                </span>
-                                                                            </td>
-                                                                            <td><?php echo htmlspecialchars($book['genre'] ?? 'N/A'); ?>
-                                                                            </td>
-                                                                            <td><?php echo htmlspecialchars($book['views'] ?? 0); ?>
-                                                                            </td>
-                                                                            <td class="action-links">
-                                                                                <a href="./edit_book.php?id=<?php echo $book['book_id']; ?>"
-                                                                                    type="button" class="btn btn-success"><i
-                                                                                        class="fas fa-pencil-alt"></i> Edit</a>
-                                                                                <a href="../controller/delete_book.php?id=<?php echo $book['book_id']; ?>"
-                                                                                    type="button" class="btn btn-danger"
-                                                                                    onclick="return confirm('Are you sure?');"><i
-                                                                                        class="fas fa-trash-alt"></i> Delete</a>
-                                                                            </td>
+                                                                            <th>Title</th>
+                                                                            <th>Status</th>
+                                                                            <th>Genre</th>
+                                                                            <th>Views</th>
+                                                                            <th>Actions</th>
                                                                         </tr>
-                                                                    <?php endforeach; ?>
-                                                                </tbody>
-                                                            </table>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <!-- The loop to display each book row -->
+                                                                        <?php foreach ($my_books as $book): ?>
+                                                                            <tr>
+                                                                                <td><strong><?php echo htmlspecialchars($book['title']); ?></strong>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <?php
+                                                                                    $status_class = '';
+                                                                                    if ($book['status'] === 'Published') {
+                                                                                        $status_class = 'bg-success';
+                                                                                    } elseif ($book['status'] === 'Draft') {
+                                                                                        $status_class = 'bg-secondary';
+                                                                                    } else {
+                                                                                        $status_class = 'bg-warning text-dark';
+                                                                                    }
+                                                                                    ?>
+                                                                                    <span
+                                                                                        class="badge <?php echo $status_class; ?>">
+                                                                                        <?php echo htmlspecialchars($book['status']); ?>
+                                                                                    </span>
+                                                                                </td>
+                                                                                <td><?php echo htmlspecialchars($book['genre'] ?? 'N/A'); ?>
+                                                                                </td>
+                                                                                <td><?php echo htmlspecialchars($book['views'] ?? 0); ?>
+                                                                                </td>
+                                                                                <td class="action-links">
+                                                                                    <a href="./edit_book.php?id=<?php echo $book['book_id']; ?>"
+                                                                                        type="button" class="btn btn-success"><i
+                                                                                            class="fas fa-pencil-alt"></i>
+                                                                                        Edit</a>
+                                                                                    <a href="../controller/delete_book.php?id=<?php echo $book['book_id']; ?>"
+                                                                                        type="button" class="btn btn-danger"
+                                                                                        onclick="return confirm('Are you sure?');"><i
+                                                                                            class="fas fa-trash-alt"></i>
+                                                                                        Delete</a>
+                                                                                </td>
+                                                                            </tr>
+                                                                        <?php endforeach; ?>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                <?php endif; ?>
+                                                    <?php endif; ?>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+
+
                                 </div>
-
-
-                            </div>
                     </main>
 
                 </div>
@@ -293,7 +304,7 @@ $my_books = $stmt_my_books->fetchAll();
                     timerProgressBar: true
                 });
 
-            }else if (status === 'Draft') {
+            } else if (status === 'Draft') {
                 Swal.fire({
                     title: 'Draft Saved!',
                     text: 'Your new book idea has been saved. You can manage it from the "Manage My Books" page.',

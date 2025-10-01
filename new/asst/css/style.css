@@ -1,0 +1,53 @@
+/* new/asst/css/style.css */
+
+/* --- 1. General Body & Fonts --- */
+body {
+    background-color: #f8f9fa; /* Light gray Bootstrap background */
+    font-family: 'Poppins', sans-serif; /* Default font */
+}
+.sidebar-title {
+    font-family: 'Cinzel Decorative', cursive;
+}
+.main-title, .card-section-title {
+    font-family: 'Lora', serif;
+}
+.page-subtitle {
+    font-family: 'Lora', serif;
+    color: #6c757d;
+}
+
+/* --- 2. Sidebar --- */
+.sidebar {
+    width: 280px;
+    background-color: #212529; /* Bootstrap dark color */
+}
+.profile-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #dee2e6;
+}
+.nav-link.active {
+    background-color: #0d6efd !important; /* Bootstrap primary blue */
+}
+
+/* --- 3. Stat Cards --- */
+.stat-card-books {
+    background: linear-gradient(135deg, #0d6efd, #0a58ca);
+    color: white;
+    transition: transform 0.3s ease;
+}
+.stat-card-views {
+    background: linear-gradient(135deg, #0dcaf0, #0aa3b8);
+    color: white;
+    transition: transform 0.3s ease;
+}
+.stat-card-books:hover, .stat-card-views:hover {
+    transform: translateY(-5px);
+}
+
+/* --- 4. Main Content Cards --- */
+.card {
+    border-radius: 0.75rem; /* Softer corners */
+}

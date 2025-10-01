@@ -86,7 +86,7 @@ $data = json_decode($json, true);
         <nav>
             <ul>
                 <li><a href="reader_dashboard.php">Home</a></li>
-                <li><a href="bookshelf.html">Bookshelf</a></li>
+                <li><a href="bookshelf.php">Bookshelf</a></li>
                 <li><a href="cost.html">Cost</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li><a href="chatbot.html">AI Chatbot</a></li>

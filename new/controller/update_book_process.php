@@ -13,9 +13,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['user_id']) && $_SE
     $status = $_POST['status']; // Get the new status
     
     // --- 2. FETCH CURRENT BOOK DATA ---
-    $stmt = $pdo->prepare("SELECT cover_image FROM books WHERE book_id = ? AND author_id = ?");
-    $stmt->execute([$book_id, $author_id]);
-    $currentBook = $stmt->fetch();
+    $stmt = $pdo->prepare("SELECT cover_image, status FROM books WHERE book_id = ? AND author_id = ?");
+$stmt->execute([$book_id, $author_id]);
+$currentBook = $stmt->fetch();
+$old_status = $currentBook['status'];
 
     if (!$currentBook) {
         header("Location: ../view/my_books.php?error=unauthorized");
@@ -35,27 +36,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['user_id']) && $_SE
 
     // --- 4. UPDATE THE DATABASE ---
     try {
-        // Add 'status = ?' to the SQL query
-        $sql = "UPDATE books SET title = ?, description = ?, genre = ?, cover_image = ?, status = ? WHERE book_id = ? AND author_id = ?";
+    // Check if the status is changing from 'Draft' to 'Published'
+    if ($old_status === 'Draft' && $status === 'Published') {
+        // If so, update everything AND set the completed_at date to today
+        $sql = "UPDATE books 
+                SET title = ?, description = ?, genre = ?, cover_image = ?, status = ?, completed_at = CURDATE() 
+                WHERE book_id = ? AND author_id = ?";
         $stmt = $pdo->prepare($sql);
-        // Add the $status variable to the execute array
         $stmt->execute([$title, $description, $genre, $coverImagePath, $status, $book_id, $author_id]);
-        if(strtolower($status) == strtolower('published')){
-                    header("Location: ../view/my_books.php?status=published");
-
-            // If the book is published, you might want to perform additional actions here
-            // e.g., notify followers, update search index, etc.
-        } else {       
-                    header("Location: ../view/my_books.php?status=Draft");
-        }
-        exit();
-
-    } catch (PDOException $e) {
-        header("Location: ../view/my_books.php?error=dberror");
-        exit();
+    } else {
+        // Otherwise, just do a normal update without touching the completed_at date
+        $sql = "UPDATE books 
+                SET title = ?, description = ?, genre = ?, cover_image = ?, status = ? 
+                WHERE book_id = ? AND author_id = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$title, $description, $genre, $coverImagePath, $status, $book_id, $author_id]);
     }
+    
+    // After the update is done, redirect with a single, clear success message
+    header("Location: ../view/my_books.php?status=updated");
+    exit();
+
+} catch (PDOException $e) {
+    header("Location: ../view/my_books.php?error=dberror");
+    exit();
+}
 } else {
-    header("Location: ../index.php");
+    header("Location: ../view/my_books.php?error=unauthorized");
     exit();
 }
 ?>

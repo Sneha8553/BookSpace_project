@@ -4,7 +4,7 @@ require_once '../controller/db/database.php';
 
 // Security: Redirect if not logged in
 if (!isset($_SESSION['user_id'])) {
-    header("Location: index.html");
+    header("Location: ../index.html");
     exit();
 }
 
@@ -34,6 +34,8 @@ $user = $stmt->fetch();
     <nav class="nav flex-column">
         <a href="../view/author_dashboard.php" class="nav-link " data-bs-dismiss="offcanvas">Dashboard</a>
         <a href="my_profile.php" class="nav-link active" data-bs-dismiss="offcanvas">My Profile</a>
+        <a href="analytics.php" class="nav-link active" data-bs-dismiss="offcanvas">  Analytics</a>
+    
         <a href="#" class="nav-link" data-bs-dismiss="offcanvas">Messages</a>
         <a href="#" class="nav-link" data-bs-dismiss="offcanvas">AI Bot</a>
     </nav>
@@ -52,6 +54,7 @@ $user = $stmt->fetch();
     <nav class="nav flex-column">
         <a href="../view/author_dashboard.php" class="nav-link">Dashboard</a>
         <a href="my_profile.php" class="nav-link active">My Profile</a>
+        <a href="analytics.php" class="nav-link active" >  Analytics</a>
         <a href="#" class="nav-link">Messages</a>
         <a href="#" class="nav-link">AI Bot</a>
     </nav>

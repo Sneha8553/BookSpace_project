@@ -1,10 +1,6 @@
 <?php
-// new/controller/books_api.php
-
-// CORRECT PATH: Go up one level to find the db folder
 require_once '../controller/db/database.php';
 
-// If POST request (Add Book)
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $title = $_POST['title'];
     // IMPORTANT: Your old 'books' table doesn't have these columns.

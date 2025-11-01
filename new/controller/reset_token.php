@@ -57,13 +57,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $mails->isSMTP();
         $mails->Host = 'smtp.gmail.com';        // Gmail SMTP
         $mails->SMTPAuth = true;
-        $mails->Username = 'parjapti3@gmail.com';  // Your Gmail
-        $mails->Password = 'pmkynlrnkixpcefb';     // 16-char App Password
+        $mails->Username = 'snehaprajapati8553@gmail.com';  // Your Gmail
+        $mails->Password = 'zebgodyabdstxbaw';     // 16-char App Password
         $mails->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // TLS
         $mails->Port = 587;                     // TLS port
 
         // Recipients
-        $mails->setFrom('parjapti3@gmail.com', 'BookSpace');
+        $mails->setFrom('snehaprajapati8553@gmail.com', 'BookSpace');
         $mails->addAddress($email);  // Receiver email
 
         // Content

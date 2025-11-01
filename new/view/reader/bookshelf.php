@@ -138,7 +138,6 @@ if (isset($_SESSION['id'])) {
             const author = document.getElementById("author").value;
             const rating = document.getElementById("rating").value;
             const cover = document.getElementById("cover").value;
-
             if (title && author && rating && cover) {
                 const formData = new FormData();
                 formData.append("title", title);
@@ -164,7 +163,5 @@ if (isset($_SESSION['id'])) {
             }
         }
     </script>
-
 </body>
-
 </html>

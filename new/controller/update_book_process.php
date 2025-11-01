@@ -40,10 +40,10 @@ $old_status = $currentBook['status'];
     if ($old_status === 'Draft' && $status === 'Published') {
         // If so, update everything AND set the completed_at date to today
         $sql = "UPDATE books 
-                SET title = ?, description = ?, genre = ?, cover_image = ?, status = ?, completed_at = CURDATE() 
+                SET title = ?, description = ?, genre = ?, cover_image = ?, status = ?
                 WHERE book_id = ? AND author_id = ?";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$title, $description, $genre, $coverImagePath, $status, $book_id, $author_id]);
+        $stmupdatedt = $pdo->prepare($sql);
+        $stmupdatedt->execute([$title, $description, $genre, $coverImagePath, $status, $book_id, $author_id]);
     } else {
         // Otherwise, just do a normal update without touching the completed_at date
         $sql = "UPDATE books 
@@ -54,10 +54,11 @@ $old_status = $currentBook['status'];
     }
     
     // After the update is done, redirect with a single, clear success message
-    header("Location: ../view/my_books.php?status=updated");
+    header("Location: ../view/my_books.php?status=".$status);
     exit();
 
 } catch (PDOException $e) {
+    // echo $e;
     header("Location: ../view/my_books.php?error=dberror");
     exit();
 }

@@ -296,7 +296,6 @@ document.addEventListener('DOMContentLoaded', function() {
                                     <th>Views</th>
                                     <th>Rating</th>
                                     <th>Published On</th>
-                                    <th>Timeline</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -315,10 +314,8 @@ document.addEventListener('DOMContentLoaded', function() {
                                                 <!-- If the book is Published, show the date -->
                                                 <td><?php echo date('M d, Y', strtotime($book['created_at'])); ?></td>
                                                 <!-- And create the canvas for the graph -->
-                                                <td><canvas id="timeline-<?php echo $book['book_id']; ?>" height="40"></canvas></td>
                                             <?php else: ?>
                                                 <!-- If it's a Draft, show "N/A" in both columns -->
-                                                <td>N/A</td>
                                                 <td>N/A</td>
                                             <?php endif; ?>
                                     <td></td></tr>

@@ -292,7 +292,7 @@ $my_books = $stmt_my_books->fetchAll();
         document.addEventListener('DOMContentLoaded', function () {
             const urlParams = new URLSearchParams(window.location.search);
             const status = urlParams.get('status');
-            if (status === 'published') {
+            if (status === 'Published') {
                 Swal.fire({
                     title: 'Published!',
                     text: 'Your new book idea has been saved. You can manage it from the "Manage My Books" page.',
@@ -315,7 +315,20 @@ $my_books = $stmt_my_books->fetchAll();
                     timer: 3500, // A little longer for readability
                     timerProgressBar: true
                 });
-            } else {
+            }
+            else if (status === 'added') {
+                Swal.fire({
+                    title: 'Book Added!',
+                    text: 'Your new book idea has been saved. You can manage it from the "Manage My Books" page.',
+                    icon: 'success',
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3500, // A little longer for readability
+                    timerProgressBar: true
+                });
+            }
+             else {
 
                 Swal.fire({
                     title: 'Error!',

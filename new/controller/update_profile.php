@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['user_id'])) {
             $stmt->execute([$newUsername, $newEmail, $newFirstName, $newLastName, $newProfileImagePath, $user_id]);
 
             $_SESSION['username'] = $newUsername;
-           // header("Location: ../view/my_profile.php?status=success");
+           header("Location: ../view/my_profile.php?status=success");
             exit();
 
         } catch (PDOException $e) {

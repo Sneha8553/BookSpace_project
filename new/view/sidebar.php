@@ -33,11 +33,11 @@ $user = $stmt->fetch();
     </div>
     <nav class="nav flex-column">
         <a href="../view/author_dashboard.php" class="nav-link " data-bs-dismiss="offcanvas">Dashboard</a>
-        <a href="my_profile.php" class="nav-link active" data-bs-dismiss="offcanvas">My Profile</a>
-        <a href="analytics.php" class="nav-link active" data-bs-dismiss="offcanvas">  Analytics</a>
+        <a href="my_profile.php" class="nav-link " data-bs-dismiss="offcanvas">My Profile</a>
+        <a href="analytics.php" class="nav-link" data-bs-dismiss="offcanvas">  Analytics</a>
     
-        <a href="#" class="nav-link" data-bs-dismiss="offcanvas">Messages</a>
-        <a href="#" class="nav-link" data-bs-dismiss="offcanvas">AI Bot</a>
+        
+        <a href="ai_bot_author.php" class="nav-link" data-bs-dismiss="offcanvas">AI Bot</a>
     </nav>
     <button class="logout-btn" onclick="logout()">LOGOUT</button>
 </div>
@@ -53,10 +53,10 @@ $user = $stmt->fetch();
     </div>
     <nav class="nav flex-column">
         <a href="../view/author_dashboard.php" class="nav-link">Dashboard</a>
-        <a href="my_profile.php" class="nav-link active">My Profile</a>
-        <a href="analytics.php" class="nav-link active" >  Analytics</a>
-        <a href="#" class="nav-link">Messages</a>
-        <a href="#" class="nav-link">AI Bot</a>
+        <a href="my_profile.php" class="nav-link ">My Profile</a>
+        <a href="analytics.php" class="nav-link " >  Analytics</a>
+    
+        <a href="ai_bot_author.php" class="nav-link">AI Bot</a>
     </nav>
     <button class="logout-btn" onclick="logout()">LOGOUT</button>
 </nav>
